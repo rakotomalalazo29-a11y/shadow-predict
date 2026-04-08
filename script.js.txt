@@ -1,0 +1,29 @@
+function calculateResult() {
+    const hash = document.getElementById('hashInput').value.trim();
+    const display = document.getElementById('multiplierText');
+
+    if (hash.length < 13) {
+        alert("Veuillez entrer un hachage SHA512 valide.");
+        return;
+    }
+
+    // On récupère les 13 premiers caractères hexadécimaux (52 bits)
+    // comme le font la plupart des algorithmes "Provably Fair"
+    const partialHash = hash.substring(0, 13);
+    
+    // Conversion Hexadécimal -> Décimal
+    const decimalValue = parseInt(partialHash, 16);
+    
+    /* Note : L'algorithme exact dépend de la plateforme. 
+       Généralement, c'est une formule du type :
+       Résultat = (2^52) / (2^52 - X) * (1 - HouseEdge)
+    */
+    
+    // Exemple simplifié de calcul de multiplicateur :
+    let multiplier = 100 / (100 - (decimalValue / Math.pow(2, 52) * 100));
+    
+    // Ajustement pour correspondre au format du jeu (ex: 5.99x)
+    multiplier = Math.max(1, multiplier); // Ne peut pas être < 1
+    
+    display.innerText = multiplier.toFixed(2) + "x";
+}

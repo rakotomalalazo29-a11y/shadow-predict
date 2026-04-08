@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator Stats & Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aviator Data Analyzer</h1>
+        <p>Entrez le SHA512 combiné pour vérifier le multiplicateur :</p>
+        
+        <input type="text" id="hashInput" placeholder="Entrez le hachage ici...">
+        <button onclick="calculateResult()">Analyser le Round</button>
+
+        <div id="resultDisplay" class="result-box">
+            <span id="multiplierText">--</span>
+        </div>
+
+        <div class="info">
+            <h3>Comment ça marche ?</h3>
+            <p>L'application simule l'algorithme de conversion Hexadécimal vers Décimal pour retrouver le multiplicateur final du crash.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
